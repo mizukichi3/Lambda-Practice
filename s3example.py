@@ -1,5 +1,5 @@
 import boto3
-import pyminzip
+import pyminizip
 import tempfile
 import os
 
