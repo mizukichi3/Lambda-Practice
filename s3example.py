@@ -7,7 +7,7 @@ filename = 'icon.png'
 s3 = boto3.resource('s3')
 
 # ファイルの読み込み
-obj = s3.object('lambda-practice-read', filename)
+obj = s3.Object('lambda-practice-read', filename)
 response = obj.get()
 tmpdir = tempfile.TemporaryDirectory()
 fp = open(tmpdir.name + '/' + filename, 'wb')
@@ -17,10 +17,10 @@ fp.close();
 # 暗号化
 zipname = tempfile.mkstemp(suffix='zip')[1]
 os.chdir(tmpdir.name)
-pyminizip.compress(filename, zipname, 'mypassword', 0)
+pyminizip.compress(filename, './', zipname, 'mypassword', 0)
 
 # S3にアップロード
-obj = s3.object('lambda-practice-read', filename + '.zip')
+obj = s3.Object('lambda-practice-read', filename + '.zip')
 response = obj.put(
     Body=open(zipname, 'rb')
 )
