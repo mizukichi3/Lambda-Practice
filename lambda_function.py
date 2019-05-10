@@ -48,3 +48,11 @@ if __name__ == "__main__":
         "ownerIdentity" : {
           "principalId": "EXAMPLE"
         }
+      }
+    }
+  ]
+}
+'''
+    event = json.loads(data)
+    context = None
+    lambda_handler(event,context)
