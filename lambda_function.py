@@ -27,3 +27,24 @@ response = obj.put(
 
 tmpdir.cleanup()
 os.unlink(zipname)
+
+# 以下、テスト用のプログラム
+import json
+if __name__ == "__main__":
+    data = '''
+{
+  "Records": [
+    {
+      "s3": {
+        "Object": {
+          "eTag": "hoge",
+          "sequencer": "fuga",
+          "key": "icon.png",
+          "size": "1024"
+        },
+      "bucket": {
+        "arn": "arn:aws:s3:::lambda-practice-read",
+        "name": "lambda-practice-read",
+        "ownerIdentity" : {
+          "principalId": "EXAMPLE"
+        }
